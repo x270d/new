@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tabs</title>
+</head>
+<body>
+	<style>
+		#tabs .tab {
+			display: inline-block;
+			padding: 5px 10px;
+			cursor: pointer;
+			cursor: pointer;
+			z-index: 5;
+		}
+
+		#tabs .whiteborder{
+			border: 1px solid #707070;
+			border-bottom: 1px solid #fff;
+			-webkit-border-radius: 3px 3px 0 0;
+			        border-radius: 3px 3px 0 0;
+		}
+
+		#tabs .tab-content{
+			width: 300px;
+			height: 60px;
+			border: 1px solid #707070;
+			position: relative;
+			top: -1px;
+			z-index: 1;
+			padding: 10px;
+			-webkit-border-radius: 0 0 3px 3px;
+			        border-radius: 0 0 3px 3px;
+		}
+		#tabs .hide{
+			display: none;
+		}
+		#tabs .show {
+			display: block;
+		}
+	</style>
+
+	<div id="tabs">
+		<div class="tab whiteborder">Tab 1</div>
+		<div class="tab">Tab 2</div>
+		<div class="tab">Tab 3</div>
+		<div class="tab-content">Content 1</div>
+		<div class="tab-content">Content 2</div>
+		<div class="tab-content">Content 3</div>
+	</div>
+
+	<div id="tabs1">
+		<div class="tab whiteborder">Tab 1</div>
+		<div class="tab">Tab 2</div>
+		<div class="tab">Tab 3</div>
+		<div class="tab-content">Content 1</div>
+		<div class="tab-content">Content 2</div>
+		<div class="tab-content">Content 3</div>
+	</div>
+	
+
+	<script>
+	const arr = [1,2,3,4,5,6,3,3,7,5]
+	const slides = [
+    { id: 1, color: 'Теплый', image: 'day' },
+    { id: 2, color: 'Дневной', image: 'day1' },
+    { id: 3, color: 'Холодный', image: 'day3' },
+    { id: 4, color: 'Холодный', image: 'day4' },
+]
+	const num = 'Теплый'
+	const result = slides.filter(i => num.includes(i.color))
+	// const result = arr.filter(i => ~num.indexOf(i))
+	// const result = slides.filter(i => num.includes(i))
+	console.log(result)
+
+		let tab 
+		let tabContent
+		window.onload = () => {
+			tabContent = document.getElementsByClassName('tab-content')
+			tab = document.getElementsByClassName('tab')
+			hideTabsContent(1)
+		} 
+
+		const hideTabsContent = (a) => {
+			for(let i = a; i < tabContent.length; i++) {
+				tabContent[i].classList.remove('show')
+				tabContent[i].classList.add('hide')
+				tab[i].classList.remove('whiteborder')
+			}
+		}
+
+		(document.getElementById('tabs') || document.getElementById('tabs1')).onclick = event => {
+			let target = event.target
+			if(target.className == 'tab') {
+				for(let i = 0; i<tab.length; i++){
+					if(target == tab[i]) {
+						showTabsContent(i)
+						break
+					}
+				}
+			}
+		}
+
+		const showTabsContent = (i) => {
+			if(tabContent[i].classList.contains('hide')) {
+				hideTabsContent(0)
+				tab[i].classList.add('whiteborder')
+				tabContent[i].classList.remove('hide')
+				tabContent[i].classList.add('show')
+			}
+		}
+		
+	</script>
+</body>
+</html>

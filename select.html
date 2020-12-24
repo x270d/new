@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+</head>
+<body>
+
+<style>
+	#test{
+		height: 20px;
+		width: 20px;
+		
+		background: #333;
+	}
+</style>
+
+	<select name="" id="mySelect" onchange="func1()">
+		<option value="">Apple</option>
+		<option value="">Orange</option>
+		<option value="">Pineapple</option>
+		<option value="">Banana</option>
+	</select>
+<!-- 
+	<input type="range" min="0" max="100" step="1" oninput="func2()" id="r2">
+	<p id="one"></p> -->
+
+	<input type="range" min="0" max="100" step="1" oninput="func2()" id="r2">
+	<div id="test"></div>
+
+	<script>
+//select
+		const func1 = () => {
+			const selec = document.getElementById('mySelect').selectedIndex
+			let option = document.getElementById('mySelect').options
+			alert("Selected option " + option[selec].text)
+		}
+//range
+		// const func2 = () => {
+		// 	let rng = document.getElementById("r2")
+		// 	let p = document.getElementById("one")
+		// 	p.innerHTML = rng.value
+		// }
+//range
+		const func2 = () => {
+			let rng = document.getElementById("r2")
+			let div = document.getElementById("test")
+			div.style.width = rng.value + 'px'
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animation</title>
+</head>
+<body>
+	<style>
+		#myContainer{
+			width: 400px;
+			height: 400px;
+			position: relative;
+			background-color: yellow;
+		
+		}
+		#myAnimation{
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			background: red;
+		}
+		
+	</style>
+
+	<button onclick="myMove()">animation</button>
+	<div id="myContainer">
+		<div id="myAnimation"></div>
+	</div>
+	
+	<script>
+		const myMove = () => {
+			const elem = document.getElementById('myAnimation')
+			let pos = 0
+			let id = setInterval(frame,10)
+			function frame(){
+				if (pos == 350){
+					clearInterval(id)
+				} else {
+					pos++
+					elem.style.top = pos + 'px'
+					elem.style.left = pos + 'px'
+				}
+			}
+		}
+	</script>	
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Css Generator</title>
+</head>
+<body>
+	<style>
+		#block{
+			width: 200px;
+			height: 100px;
+			background: green;
+		}
+	</style>
+	<div class="block1">
+		<p> Верхний левый угол:
+			<input type="range" id="rtl" min="0" max="100" value="0" oninput="func1()">
+			<input type="text" id="ttl" value="0">
+		</p>
+		<p> Верхний правый угол:
+			<input type="range" id="rtr" min="0" max="100" value="0" oninput="func1()">
+			<input type="text" id="ttr" value="0">
+		</p>
+		<p> Нижний правый угол:
+			<input type="range" id="rbr" min="0" max="100" value="0" oninput="func1()">
+			<input type="text" id="tbr" value="0">
+		</p>
+		<p> Нижний левый угол:
+			<input type="range" id="rbl" min="0" max="100" value="0" oninput="func1()">
+			<input type="text" id="tbl" value="0">
+		</p>
+	</div>
+	<div id="block">
+		
+	</div>
+
+	<script>
+		const func1 = () => {
+			let rtl = document.getElementById("rtl").value
+			let rtr = document.getElementById("rtr").value
+			let rbl = document.getElementById("rbl").value
+			let rbr = document.getElementById("rbr").value
+
+			let ttl = document.getElementById("ttl")
+			let ttr = document.getElementById("ttr")
+			let tbr = document.getElementById("tbr")
+			let tbl = document.getElementById("tbl")
+
+			let block = document.getElementById("block")
+
+			ttl.value = rtl
+			ttr.value = rtr
+			tbl.value = rbl
+			tbr.value = rbr
+
+			block.style.borderRadius = rtl + 'px ' + rtr + 'px ' + rbr + 'px ' + rbl + 'px '
+		}
+	</script>
+</body>
+</html>
